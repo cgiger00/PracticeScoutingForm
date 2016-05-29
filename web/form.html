@@ -2,17 +2,14 @@
 {% block body %}
 <div class="row">
   <div class="col-md-4 col-xs-4">
-    <h2>Scouting Form</h2>
-  </div>
-  <div class="col-md-8 col-xs-8 text-right">
-    <img src="static/custom/logo.png" id="logo"></img>
+    <h2>Teacher Survey</h2>
   </div>
 </div>
 <form method="post" id="scouting-form" autocomplete="off">
   {{ form.csrf_token }}
   <div class="row form-group">
-    {{ form.match_id }}
-    {{ form.team_id }}
+    {{ form.name_id.label }} {{ form.name_id }}
+    {{ form.teacher_id.label }}{{ form.teacher_id }}
   </div>
   <div class="row">
     <div class="col-md-6">
@@ -27,29 +24,29 @@
     </div>
   </div>
   <div class="game-period">
-    <h3>Autonomous</h3>
+    <h3>Subject Matters</h3>
     <div class="row">
       <div class="col-md-6 col-xs-12">
-        {{ form.auton_start.label }} {{ form.auton_start }}
+        {{ form.which_subject.label }} {{ form.which_subject }}
       </div>
     </div>
     <div class="row">
       <div class="col-md-11 col-xs-12">
-        {{ form.auton_breach.label }} {{ form.auton_breach }}
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-6 col-xs-12">
-        {{ form.auton_score.label }} {{ form.auton_score }}
+        {{ form.like_subject.label }} {{ form.like_subject }}
       </div>
     </div>
   </div>
   <div class="game-period">
-    <h3>Teleop</h3>
+    <h3>Teacher Rating</h3>
     <div class="row form-group">
-      {{ form.breach_count }}
+      {{ form.personality.label }} {{ form.personality }}
     </div>
-
+    <div>
+      {{ form.rating.label }} {{ form.rating }}
+    </div>
+    <div size=10>
+      In What Ways Was Your Teacher Bad (Check all that apply)
+    </div>
     <div class="row">
       {{ form.cf_breach }}
       {{ form.rp_breach }}

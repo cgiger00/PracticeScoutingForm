@@ -1,42 +1,32 @@
 import flask_wtf
 from widgets import * #http://wtforms.readthedocs.org/en/latest/fields.html
 
-class BreachField(CheckboxButtonField):
-    col_md = 2
-    col_sm = 4
-    col_xs = 12
-
 class Form(flask_wtf.Form):
-    match_id = IntegerField('Match ID', buttons=False)
-    team_id = IntegerField('Team ID', buttons=False)
+    name_id = StringField('Name')
+    teacher_id = StringField('Teacher')
     #Auton Section
-    auton_start = RadioField('Robot Starting Location',choices=[('Neutral Zone','Neutral Zone'), ('Courtyard','Courtyard')],
-                             default='Neutral Zone')
-    auton_breach = RadioField('Defense Crossed in Auton', choices=[('0','None'),
-                                                                   ('1','Touched'),
-                                                                   ('2','Crossed (Mark the defense in the Teleop section)')],
+    which_subject = RadioField('Which Subject?',choices=[('English','English'), ('Math','Math'),('Science','Science'),('Social Studies','Social Studies'), ('Art','Art'),('Other','Other')],
+                             default='Other')
+    like_subject = RadioField('Do you acutally like this subject?', choices=[('0','No'),
+                                                                   ('1','Yes'),
+                                                                   ('2','Maybe')],
                                                                    default='0')
-    auton_score = RadioField('Ball Scored', choices=[('0','None'), ('1','Low Goal'), ('2','High Goal')],
-                             default='0')
     #Teleop Section
 
     #Breaching checkboxes
-    lb_breach = BreachField('Low Bar')
-    pc_breach = BreachField('Portcullis')
-    cf_breach = BreachField('Cheval de Frise')
-    mo_breach = BreachField('Moat')
-    rp_breach = BreachField('Ramparts')
-    db_breach = BreachField('Drawbridge')
-    sp_breach = BreachField('Sally Port')
-    rw_breach = BreachField('Rock Wall')
-    rt_breach = BreachField('Rough Terrain')
+    lb_breach = CheckboxButtonField('Low Bar')
+    pc_breach = CheckboxButtonField('Portcullis')
+    cf_breach = CheckboxButtonField('Cheval de Frise')
+    mo_breach = CheckboxButtonField('Moat')
+    rp_breach = CheckboxButtonField('Ramparts')
+    db_breach = CheckboxButtonField('Drawbridge')
+    sp_breach = CheckboxButtonField('Sally Port')
+    rw_breach = CheckboxButtonField('Rock Wall')
+    rt_breach = CheckboxButtonField('Rough Terrain')
 
     #Other
-    breach_count = IntegerField('Number of defenses crossed', default=0,
-        col_md=6,
-        label_col_md=6,
-        col_sm=8,
-        label_col_sm=12)
+    personality = RadioField('What is your teacher like?', choices=[('0','Amazing'), ('1','Alright'),('2','Meh, could be better'),('3','Bad'),('4','Horrendous'),('5','The Worst Person I know x100 * 2')], default='0')
+    rating = RadioField('Please Rate Your Teacher On A Scale Of 1 To 10', choices=[('0','1'),('1','2'),('2','3'),('3','4'),('4','5'),('5','6'),('6','7'),('7','8'),('8','9'),('9','10'),], default='0')
     high_scores = IntegerField('High Goals Scored', default=0, col_sm=6)
     high_misses = IntegerField('High Shots Missed', default=0, col_sm=6)
     low_scores = IntegerField('Low Goals Scored', default=0, col_sm=6)
@@ -47,4 +37,4 @@ class Form(flask_wtf.Form):
     defense_time = RadioField('How much time did they spend on defense?', choices=[('0', 'No Time'), ('1', 'Less than Half'), ('2', 'Most of the Time'), ('3', 'All Match')], default="0")
 
     hang = CheckboxButtonField('Robot Scaled Tower', col_md=3)
-    comments = TextAreaField('', col_lg=12)
+    comments = TextAreaField('How Can We Improve this Survey?', col_lg=12)
