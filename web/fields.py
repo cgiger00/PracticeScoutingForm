@@ -14,15 +14,15 @@ class Form(flask_wtf.Form):
     #Teleop Section
 
     #Breaching checkboxes
-    lb_breach = CheckboxButtonField('Low Bar')
-    pc_breach = CheckboxButtonField('Portcullis')
-    cf_breach = CheckboxButtonField('Cheval de Frise')
-    mo_breach = CheckboxButtonField('Moat')
-    rp_breach = CheckboxButtonField('Ramparts')
-    db_breach = CheckboxButtonField('Drawbridge')
-    sp_breach = CheckboxButtonField('Sally Port')
-    rw_breach = CheckboxButtonField('Rock Wall')
-    rt_breach = CheckboxButtonField('Rough Terrain')
+    lb_breach = CheckboxButtonField('Gives too much homework')
+    pc_breach = CheckboxButtonField('Too artificial')
+    cf_breach = CheckboxButtonField('Is lazy and never grades anything')
+    mo_breach = CheckboxButtonField('Grades too hard')
+    rp_breach = CheckboxButtonField('Is stupid')
+    db_breach = CheckboxButtonField('Loses your work')
+    sp_breach = CheckboxButtonField('Spends class time complaining about life')
+    rw_breach = CheckboxButtonField('On computer all the time')
+    rt_breach = CheckboxButtonField('Is completely irrational')
 
     #Other
     personality = RadioField('What is your teacher like?', choices=[('0','Amazing'), ('1','Alright'),('2','Meh, could be better'),('3','Bad'),('4','Horrendous'),('5','The Worst Person I know x100 * 2')], default='0')
