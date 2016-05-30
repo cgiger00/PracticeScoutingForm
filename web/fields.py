@@ -1,9 +1,10 @@
 import flask_wtf
+import datetime
 from widgets import * #http://wtforms.readthedocs.org/en/latest/fields.html
-
 class Form(flask_wtf.Form):
     name_id = StringField('Name')
     teacher_id = StringField('Teacher')
+    time_id = datetime.date.today()
     #Auton Section
     which_subject = RadioField('Which Subject?',choices=[('English','English'), ('Math','Math'),('Science','Science'),('Social Studies','Social Studies'), ('Art','Art'),('Other','Other')],
                              default='Other')
@@ -26,15 +27,17 @@ class Form(flask_wtf.Form):
 
     #Other
     personality = RadioField('What is your teacher like?', choices=[('0','Amazing'), ('1','Alright'),('2','Meh, could be better'),('3','Bad'),('4','Horrendous'),('5','The Worst Person I know x100 * 2')], default='0')
-    rating = RadioField('Please Rate Your Teacher On A Scale Of 1 To 10', choices=[('0','1'),('1','2'),('2','3'),('3','4'),('4','5'),('5','6'),('6','7'),('7','8'),('8','9'),('9','10'),], default='0')
-    high_scores = IntegerField('High Goals Scored', default=0, col_sm=6)
-    high_misses = IntegerField('High Shots Missed', default=0, col_sm=6)
-    low_scores = IntegerField('Low Goals Scored', default=0, col_sm=6)
-    fouls = IntegerField('Fouls', default=0, col_sm=6)
-    tech_fouls = IntegerField('Tech Fouls', default=0, col_sm=6)
+    rating = SelectField('Please Rate Your Teacher On A Scale Of 1 To 10', choices=[('0','1'),('1','2'),('2','3'),('3','4'),('4','5'),('5','6'),('6','7'),('7','8'),('8','9'),('9','10'),], default='0')
+    
+    #you in class
+    learned = BooleanField('I have learned something in class this year' ,false_values =None)
+    time_sleep = SelectField('Time Spent Sleeping', choices=[('0','None'),('1','On occasion'),('2','Most of class'),('3',"lol I don't even attend")], default=0,)
+    text = BooleanField('I text/snapchat my friends during class', false_values = None)
+    other_work = BooleanField('I do other work in class (i.e. math)', false_values = None)
+    
+    #tech_fouls = IntegerField('Tech Fouls', default=0, col_sm=6)
 
-    defense_rating = RadioField('How well did they play defense?', choices=[('0','Did not Defend'), ('1', 'Bad Defense'), ('2', 'Moderate Defense'), ('3', 'Best Defense')], default="0")
-    defense_time = RadioField('How much time did they spend on defense?', choices=[('0', 'No Time'), ('1', 'Less than Half'), ('2', 'Most of the Time'), ('3', 'All Match')], default="0")
+    dem_smart = RadioField('Do you think your teacher is good at teaching?', choices=[('0','Yes'),('1','No')],default= '0')
 
-    hang = CheckboxButtonField('Robot Scaled Tower', col_md=3)
-    comments = TextAreaField('How Can We Improve this Survey?', col_lg=12)
+    hang = CheckboxButtonField('I Passed The Class!', col_md=3)
+    comments = TextAreaField('', col_lg=12)

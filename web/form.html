@@ -1,27 +1,22 @@
 {% extends "base.html" %}
 {% block body %}
 <div class="row">
-  <div class="col-md-4 col-xs-4">
+	<div class="col-md-4 col-xs-4">
+  		{{ form.time_id }}
+    </div>
+</div>
+ <div class ="row">
+    <div class="col-md-4">
     <h2>Teacher Survey</h2>
-  </div>
+    </div>
 </div>
 <form method="post" id="scouting-form" autocomplete="off">
   {{ form.csrf_token }}
   <div class="row form-group">
+  	<div class = "col-md-2">
     {{ form.name_id.label }} {{ form.name_id }}
     {{ form.teacher_id.label }}{{ form.teacher_id }}
-  </div>
-  <div class="row">
-    <div class="col-md-6">
-      {% if conf.get('station', 'none').lower() == 'none' %}
-        <div id="alert" class="alert alert-warning">No player station selected; team ID completion is not available.
-        See {{link_to('config_form', 'Settings')}} to choose a station.</div>
-      {% else %}
-        <div><label>Player Station: {{conf.get('station', '?')}}</label></div>
-        <div><label>Match name: {{conf.get('match_name', '?')}}</label></div>
-        <div id="alert" class="alert" style="display: none;"></div>
-      {% endif %}
-    </div>
+	</div>  
   </div>
   <div class="game-period">
     <h3>Subject Matters</h3>
@@ -39,13 +34,18 @@
   <div class="game-period">
     <h3>Teacher Rating</h3>
     <div class="row form-group">
+    	<div class = 'col-md-4'>
       {{ form.personality.label }} {{ form.personality }}
+    	</div>
     </div>
     <div>
       {{ form.rating.label }} {{ form.rating }}
     </div>
     <div size=10>
-      In What Ways Was Your Teacher Bad (Check all that apply)
+      <b>In What Ways Was Your Teacher Bad (Click all that apply)?</b>
+    </div>
+    <div class = "row">
+    	<br/>
     </div>
     <div class="row">
       {{ form.cf_breach }}
@@ -60,38 +60,48 @@
       {{ form.db_breach }}
       {{ form.rw_breach }}
     </div>
-
+    <h3> You In Class</h3>
     <div class="row">
-      {{ form.high_scores }}
-      {{ form.fouls }}
-    </div>
-    <div class="row">
-      {{ form.high_misses }}
-      {{ form.tech_fouls }}
-    </div>
-    <div class="row">
-      {{ form.low_scores }}
-    </div>
-    <div class="row">
-      <div class="col-md-10 col-xs-12">
-        {{ form.defense_rating.label }} {{ form.defense_rating }}
+    	<div class = 'col-md-4'>
+      {{ form.time_sleep.label }}{{ form.time_sleep }}
+      <div class ='row'><br/></div>
+      {{ form.learned.label }} &nbsp {{ form.learned }}
       </div>
     </div>
+    <div class ='row'><br/></div>
+    <div class="row">
+     <div class = 'col-md-4'>
+      {{ form.text.label }} &nbsp {{ form.text }}
+     </div> 
+    </div>
+    <div class ='row'><br/></div>
+    <div class="row">
+    <div class = 'col-md-4'>
+      {{ form.other_work.label }} &nbsp {{ form.other_work }}
+    </div>  
+    </div>
+    <div class ='row'><br/></div>
     <div class="row">
       <div class="col-md-10 col-xs-12">
-        {{ form.defense_time.label }} {{ form.defense_time }}
+        {{ form.dem_smart.label }} {{ form.dem_smart }}
       </div>
     </div>
-  </div>
+    <div class ='row'> 
+    <div class = 'col-md-10'>
+    <b>If the answer is Yes please demonstrate your knowlege by solving the follwing problem:</b> </br> <i>Given a positive integer n, if it is odd then calculate 3n+1. If it is even, calculate n/2. Repeat this process with the resulting value. For example, if you begin with 1, then you obtain the sequence 1,4,2,1,4,2,1,4,2,1,… which will repeat forever in this way. If you start with a 5, then you obtain the sequence 5,16,8,4,2,1,… and now find yourself in the previous case. If you start from any positive integer, does this process always end by cycling through 1,4,2,1,4,2,1,…? Prove this.
+    </i>
+    </div>
+    </div>
+    <div class ='row'><br/></div>
   <div class="game-period">
-    <h3>End Game</h3>
+    <h4>End Game</h4>
   </div>
   <div class="row">
     {{ form.hang }}
   </div>
   <div class="row">
     <div class="col-md-3 col-xs-12">
-      <h3>Comments</h3>
+      <h4>How Can We Improve This Survey</h4>
     </div>
   </div>
   <div class="row form-group">
