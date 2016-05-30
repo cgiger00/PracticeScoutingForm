@@ -8,7 +8,7 @@ class Form(flask_wtf.Form):
     #Auton Section
     which_subject = RadioField('Which Subject?',choices=[('English','English'), ('Math','Math'),('Science','Science'),('Social Studies','Social Studies'), ('Art','Art'),('Other','Other')],
                              default='Other')
-    like_subject = RadioField('Do you acutally like this subject?', choices=[('0','No'),
+    like_subject = RadioField('Do you actually like this subject?', choices=[('0','No'),
                                                                    ('1','Yes'),
                                                                    ('2','Maybe')],
                                                                    default='0')
